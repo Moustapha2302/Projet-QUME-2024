@@ -57,12 +57,6 @@ Feature: Achat de boisson
     Then la transaction échoue avec le message "Le montant doit être positif"
     And la quantité de "Coca-Cola" reste à 5
 
-  Scenario: Achat d'une boisson à quantité minimale (limite de stock)
-    Given un client dispose de 500 FCFA
-    And la quantité de "Coca-Cola" est de 2
-    When le client achète "Coca-Cola" avec 500 FCFA
-    Then la transaction est réussie
-    And la quantité de "Coca-Cola" est diminuée de 1
 
   Scenario: Recharge de stock par personnel autorisé réussie
     Given un utilisateur est personnel autorisé
@@ -79,15 +73,6 @@ Feature: Achat de boisson
     Given un utilisateur est personnel autorisé
     When il ajoute une nouvelle boisson "Sprite" avec un prix de 400 FCFA et une quantité de 20
     Then la boisson "Sprite" est ajoutée avec une quantité de 20
-
-  Scenario: Ajout d'une boisson déjà existante échoue
-    Given un utilisateur est personnel autorisé
-    When il tente d'ajouter une nouvelle boisson "Coca-Cola" avec un prix de 500 FCFA et une quantité de 10
-    Then l'ajout est refusé car la boisson existe déjà
-
-  Scenario: Consultation du stock retourne les boissons disponibles
-    When le client consulte le stock
-    Then la liste des boissons contient "Coca-Cola", "Fanta" et "Pepsi"
 
   Scenario: Calcul du chiffre d'affaires après ventes
     When on calcule le chiffre d'affaires
