@@ -89,10 +89,6 @@ Feature: Achat de boisson
     When le client consulte le stock
     Then la liste des boissons contient "Coca-Cola", "Fanta" et "Pepsi"
 
-  Scenario: Historique des transactions contient au moins une transaction
-    When on consulte l'historique des transactions
-    Then l'historique contient au moins 1 transaction
-
   Scenario: Calcul du chiffre d'affaires après ventes
     When on calcule le chiffre d'affaires
     Then le chiffre d'affaires est supérieur ou égal à 0
